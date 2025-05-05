@@ -7,6 +7,7 @@ const BooksList = ({ onEdit, refreshFlag }) => {
 
   const fetchBooks = async () => {
     try {
+      console.log("API base URL:", process.env.REACT_APP_API_URL)
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/books`); // 'http://localhost:5000/books'
       setBooks(response.data);
     } catch (error) {
