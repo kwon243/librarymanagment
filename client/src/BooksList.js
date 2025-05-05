@@ -7,7 +7,7 @@ const BooksList = ({ onEdit, refreshFlag }) => {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/books');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/books`); // 'http://localhost:5000/books'
       setBooks(response.data);
     } catch (error) {
       console.error('Error fetching books:', error);
@@ -20,7 +20,7 @@ const BooksList = ({ onEdit, refreshFlag }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/books/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/books/${id}`);
       fetchBooks();
     } catch (error) {
       console.error('Error deleting book:', error);

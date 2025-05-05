@@ -13,9 +13,9 @@ function Reports() {
   useEffect(() => {
     const fetchFilters = async () => {
       try {
-        const authorsRes = await axios.get('http://localhost:5000/authors');
+        const authorsRes = await axios.get(`${process.env.REACT_APP_API_URL}/authors`);
         setAuthors(authorsRes.data);
-        const genresRes = await axios.get('http://localhost:5000/genres');
+        const genresRes = await axios.get(`${process.env.REACT_APP_API_URL}/genres`);
         setGenres(genresRes.data);
       } catch (error) {
         console.error('Error fetching filter data:', error);
@@ -51,7 +51,7 @@ function Reports() {
       }
 
       const queryString = new URLSearchParams(params).toString();
-      const response = await axios.get(`http://localhost:5000/reports/books?${queryString}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/reports/books?${queryString}`);
       setReportBooks(response.data);
     } catch (error) {
       console.error('Error generating report:', error);

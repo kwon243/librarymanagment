@@ -59,14 +59,14 @@ const BookForm = ({ bookToEdit, onSuccess, onCancel }) => {
       let authorId = book.author;
       if (book.author === 'new') {
         // Create new author
-        const authorResponse = await axios.post('http://localhost:5000/authors', newAuthor);
+        const authorResponse = await axios.post(`${process.env.REACT_APP_API_URL}/authors`, newAuthor);
         authorId = authorResponse.data._id;
       }
 
       let genreId = book.genre;
       if (book.genre === 'new') {
         // Create new genre
-        const genreResponse = await axios.post('http://localhost:5000/genres', newGenre);
+        const genreResponse = await axios.post(`${process.env.REACT_APP_API_URL}/genres`, newGenre);
         genreId = genreResponse.data._id;
       }
 
@@ -74,10 +74,10 @@ const BookForm = ({ bookToEdit, onSuccess, onCancel }) => {
 
       if (bookToEdit) {
         // Update existing book
-        await axios.put(`http://localhost:5000/books/${bookToEdit._id}`, bookData);
+        await axios.put(`${process.env.REACT_APP_API_URL}/books/${bookToEdit._id}`, bookData);
       } else {
         // Add new book
-        await axios.post('http://localhost:5000/books', bookData);
+        await axios.post(`${process.env.REACT_APP_API_URL}/books`, bookData);
       }
       onSuccess();
     } catch (error) {
