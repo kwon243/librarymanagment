@@ -22,9 +22,9 @@ const BookForm = ({ bookToEdit, onSuccess, onCancel }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const authorsRes = await axios.get('http://localhost:5000/authors');
+        const authorsRes = await axios.get(`${process.env.REACT_APP_API_URL}/authors`);
         setAuthors(authorsRes.data);
-        const genresRes = await axios.get('http://localhost:5000/genres');
+        const genresRes = await axios.get(`${process.env.REACT_APP_API_URL}/genres`);
         setGenres(genresRes.data);
       } catch (error) {
         console.error('Error fetching data:', error);

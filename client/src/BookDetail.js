@@ -10,7 +10,7 @@ function BookDetail() {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/books`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/books`);
         const matchedBook = res.data.find((b) => b._id === id);
         setBook(matchedBook);
       } catch (error) {
